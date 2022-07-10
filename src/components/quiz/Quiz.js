@@ -6,11 +6,13 @@ import { context } from "../../App";
 import "./quiz.css";
 import Header from "./Header";
 import { questions } from "../../mcq/questions";
+import { useNavigate } from "react-router-dom";
 
 export let score = 0;
 
 function Quiz() {
   const value = useContext(context);
+  const navigate = useNavigate();
   const mcqQuestion = value[0];
   const setMcqQuestion = value[1];
 
@@ -30,9 +32,11 @@ function Quiz() {
               score += 1;
             }
             setTimeout(() => {
+              if (count === questions.length) {
+                navigate("/result");
+              }
               setCount(count + 1);
               setMcqQuestion(questions[count]);
-              console.log("c2: " + count);
             }, 500);
           }}
         />
