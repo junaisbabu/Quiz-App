@@ -32,11 +32,11 @@ function Quiz() {
               score += 1;
             }
             setTimeout(() => {
-              if (count === questions.length) {
-                navigate("/result");
+              if (count !== questions.length) {
+                // navigate("/result");
+                setCount(count + 1);
+                setMcqQuestion(questions[count]);
               }
-              setCount(count + 1);
-              setMcqQuestion(questions[count]);
             }, 500);
           }}
         />
